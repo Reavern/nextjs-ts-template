@@ -1,8 +1,20 @@
 import React from 'react';
 import { NextPage } from 'next';
+import Head from 'next/head'
+import ResponsiveDrawer from '../components/ResponsiveDrawer';
+
 
 const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => (
-    <h1>Hello world! - user agent: {userAgent}</h1>
+    <html>
+        <Head>
+            <title>My page title</title>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+        </Head>
+        <body>
+            <ResponsiveDrawer />
+            <h1>TEST : {userAgent}</h1>
+        </body>
+    </html>
 );
 
 Home.getInitialProps = async ({ req }) => {
