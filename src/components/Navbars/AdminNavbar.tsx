@@ -21,7 +21,7 @@ const AdminNavbar = () => {
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  function toggleDropdown() { console.log("ASSASD");setDropdownOpen(!dropdownOpen) }
+  function toggleDropdown() { setDropdownOpen(!dropdownOpen) }
 
   return (
     <>

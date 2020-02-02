@@ -20,7 +20,7 @@ import {
 import AdminLayout from '../../../layouts/AdminLayout';
 import Header from "../../../components/Headers/Header.jsx";
 
-import { useRouter  } from 'next/router'
+import { useRouter } from 'next/router';
 
 
 const DashboardPage: NextPage<{ userAgent: string }> = () => {

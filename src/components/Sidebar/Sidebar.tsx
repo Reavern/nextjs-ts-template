@@ -32,46 +32,47 @@ import {
 } from "reactstrap";
 
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 var routes = [
   {
-    path: "dashboard",
+    path: "/dashboard",
     name: "Dashboard",
     icon: "ni ni-tv-2 text-primary",
     layout: "/admin"
   },
   {
-    path: "icons",
+    path: "/icons",
     name: "Icons",
     icon: "ni ni-planet text-blue",
     layout: "/admin"
   },
   {
-    path: "maps",
+    path: "/maps",
     name: "Maps",
     icon: "ni ni-pin-3 text-orange",
     layout: "/admin"
   },
   {
-    path: "user-profile",
+    path: "/user-profile",
     name: "User Profile",
     icon: "ni ni-single-02 text-yellow",
     layout: "/admin"
   },
   {
-    path: "tables",
+    path: "/tables",
     name: "Tables",
     icon: "ni ni-bullet-list-67 text-red",
     layout: "/admin"
   },
   {
-    path: "login",
+    path: "/login",
     name: "Login",
     icon: "ni ni-key-25 text-info",
     layout: "/auth"
   },
   {
-    path: "register",
+    path: "/register",
     name: "Register",
     icon: "ni ni-circle-08 text-pink",
     layout: "/auth"
@@ -85,19 +86,20 @@ const Sidebar = () => {
   function toggleCollapse() { setCollapse(!collapse); }
   function closeCollapse() { setCollapse(false); }
 
+  const router = useRouter();
+
   // creates the links that appear in the left menu / Sidebar
   function createLinks() {
     const output = [];
     routes.map((prop, key) => {
       output.push(
-        <Link href={prop.path}>
+        <Link href={prop.layout + prop.path}>
           <NavItem key={key}>
             <NavLink
               to={prop.layout + prop.path}
-              href={prop.path}
+              href={prop.layout + prop.path}
               onClick={closeCollapse}
-              activeClassName="active"
-              active
+              active={router.pathname === (prop.layout + prop.path)}
             >
               <i className={prop.icon} />
               {prop.name}
