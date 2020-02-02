@@ -18,7 +18,7 @@ import {
 } from "reactstrap";
 
 import AdminLayout from '../../../layouts/AdminLayout';
-import Header from "../../../components/Headers/Header.jsx";
+import Header from "../../../components/Headers/Headers";
 
 import { useRouter } from 'next/router';
 
