@@ -53,6 +53,12 @@ var routes = [
     icon: "ni ni-bullet-list-67 text-blue",
     layout: "/admin"
   },
+  {
+    path: "/dashboard/modal",
+    name: "Modal",
+    icon: "ni ni-bullet-list-67 text-blue",
+    layout: "/admin"
+  },
 ];
 
 const Sidebar = () => {
@@ -70,7 +76,7 @@ const Sidebar = () => {
     routes.map((prop, key) => {
       output.push(
         <Link href={prop.layout + prop.path} key={key} >
-          <NavItem style={{cursor: 'pointer'}}>
+          <NavItem style={{ cursor: 'pointer' }}>
             <NavLink
               to={prop.layout + prop.path}
               onClick={closeCollapse}
@@ -192,21 +198,9 @@ const Sidebar = () => {
           {/* Navigation */}
           <Nav className="mb-md-3" navbar>
             <NavItem>
-              <NavLink href="https://demos.creative-tim.com/argon-dashboard-react/documentation/overview?ref=adr-admin-sidebar">
+              <NavLink href="">
                 <i className="ni ni-spaceship" />
                 Getting started
-                </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="https://demos.creative-tim.com/argon-dashboard-react/documentation/colors?ref=adr-admin-sidebar">
-                <i className="ni ni-palette" />
-                Foundation
-                </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="https://demos.creative-tim.com/argon-dashboard-react/documentation/alerts?ref=adr-admin-sidebar">
-                <i className="ni ni-ui-04" />
-                Components
                 </NavLink>
             </NavItem>
           </Nav>

@@ -20,12 +20,10 @@ import {
     Pagination,
     PaginationItem,
     PaginationLink,
-
     DropdownMenu,
     DropdownItem,
     UncontrolledDropdown,
     DropdownToggle,
-
     Form,
     Badge,
     Media,
@@ -42,8 +40,6 @@ import _ from 'lodash';
 import { SortableTableHead, filterItem, getItems } from '~/src/utils/TableHelper';
 
 const TableRow = ({ name }) => {
-
-    const LEFT_ICON = <i className="fas fa-angle-right"></i>;
 
     return (
         <tr>

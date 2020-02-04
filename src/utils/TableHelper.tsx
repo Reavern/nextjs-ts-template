@@ -6,8 +6,8 @@ export const SortableTableHead = ({ title, path, currPath, flag, setSortData }) 
             {
                 path === currPath ?
                     flag ?
-                        ( <i className="ni ni-bold-down" /> ) : 
-                        ( <i className="ni ni-bold-up" /> )
+                        ( <i className="ni ni-bold-up" /> ) : 
+                        ( <i className="ni ni-bold-down" /> )
                     : null
             }
         </th>
