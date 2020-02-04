@@ -18,15 +18,16 @@ import {
 } from "reactstrap";
 
 import AuthLayout from '../../layouts/AuthLayout';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import Link from 'next/link';
 
 const AdminLoginPage: NextPage<{ userAgent: string }> = () => (
-    <html>
+    <div>
         <Head>
             <title>Admin</title>
         </Head>
-        <body>
+        <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <AuthLayout>
                 <Col lg="5" md="7">
                     <Card className="bg-secondary shadow border-0">
@@ -105,11 +106,11 @@ const AdminLoginPage: NextPage<{ userAgent: string }> = () => (
                                 </div> */}
                                 <div className="text-center">
                                     <Link href="/admin/dashboard">
-                                    <Button className="my-4" color="primary" type="button">
-                                        Sign in
+                                        <Button className="my-4" color="primary" type="button">
+                                            Sign in
                                     </Button>
                                     </Link>
-                                    
+
                                 </div>
                             </Form>
                         </CardBody>
@@ -136,9 +137,9 @@ const AdminLoginPage: NextPage<{ userAgent: string }> = () => (
                     </Row> */}
                 </Col>
             </AuthLayout>
-        </body>
-    </html>
-);
-
-
+        </motion.div >
+</div>
+        );
+        
+        
 export default AdminLoginPage;

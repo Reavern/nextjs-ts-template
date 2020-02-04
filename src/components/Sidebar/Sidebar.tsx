@@ -42,41 +42,17 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/icons",
-    name: "Icons",
-    icon: "ni ni-planet text-blue",
-    layout: "/admin"
-  },
-  {
-    path: "/maps",
-    name: "Maps",
-    icon: "ni ni-pin-3 text-orange",
-    layout: "/admin"
-  },
-  {
-    path: "/user-profile",
-    name: "User Profile",
-    icon: "ni ni-single-02 text-yellow",
-    layout: "/admin"
-  },
-  {
-    path: "/tables",
+    path: "/dashboard/table",
     name: "Tables",
     icon: "ni ni-bullet-list-67 text-red",
     layout: "/admin"
   },
   {
-    path: "/login",
-    name: "Login",
-    icon: "ni ni-key-25 text-info",
-    layout: "/auth"
+    path: "/dashboard/form",
+    name: "Form",
+    icon: "ni ni-bullet-list-67 text-blue",
+    layout: "/admin"
   },
-  {
-    path: "/register",
-    name: "Register",
-    icon: "ni ni-circle-08 text-pink",
-    layout: "/auth"
-  }
 ];
 
 const Sidebar = () => {
@@ -93,11 +69,10 @@ const Sidebar = () => {
     const output = [];
     routes.map((prop, key) => {
       output.push(
-        <Link href={prop.layout + prop.path}>
-          <NavItem key={key}>
+        <Link href={prop.layout + prop.path} key={key} >
+          <NavItem style={{cursor: 'pointer'}}>
             <NavLink
               to={prop.layout + prop.path}
-              href={prop.layout + prop.path}
               onClick={closeCollapse}
               active={router.pathname === (prop.layout + prop.path)}
             >
@@ -139,21 +114,6 @@ const Sidebar = () => {
         ) : null} */}
         {/* User */}
         <Nav className="align-items-center d-md-none">
-          <UncontrolledDropdown nav>
-            <DropdownToggle nav className="nav-link-icon">
-              <i className="ni ni-bell-55" />
-            </DropdownToggle>
-            <DropdownMenu
-              aria-labelledby="navbar-default_dropdown_1"
-              className="dropdown-menu-arrow"
-              right
-            >
-              <DropdownItem>Action</DropdownItem>
-              <DropdownItem>Another action</DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem>Something else here</DropdownItem>
-            </DropdownMenu>
-          </UncontrolledDropdown>
           <UncontrolledDropdown nav>
             <DropdownToggle nav>
               <Media className="align-items-center">

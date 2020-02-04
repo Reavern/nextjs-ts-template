@@ -3,17 +3,41 @@ import { NextPage } from 'next';
 import Head from 'next/head'
 // import ResponsiveDrawer from '../components/ResponsiveDrawer';
 import { firebaseApp } from '../utils/Firebase';
+import { motion } from "framer-motion";
 
 import Link from 'next/link';
 
 import {
     Button
 } from "reactstrap";
+import { CSSProperties } from '@material-ui/styles';
 
+const Item = ({ children }) => {
+
+    const itemStyle = {
+        background: 'black',
+        borderRadius: '30px',
+        width: '150px',
+        height: '150px',
+    } as CSSProperties;
+
+    return (
+        <div style={itemStyle}>
+            {children}
+        </div>
+    );
+}
 
 const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => {
 
     const [midtransToken, setMidtransToken] = useState('');
+
+    const itemStyle = {
+        background: 'black',
+        borderRadius: '30px',
+        width: '150px',
+        height: '150px',
+    } as CSSProperties;
 
     async function createTransaction() {
 
@@ -80,7 +104,7 @@ const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => {
             </Head>
             <body>
                 <h1>TEST : {userAgent}</h1>
-                <Link href="/admin"><a>ADMIN</a></Link><br/>
+                <Link href="/admin"><a>ADMIN</a></Link><br />
                 <Button onClick={createTransaction}>CREATE MIDTRANS TRANSACTION</Button>
                 {midtransToken}
                 {
@@ -89,6 +113,12 @@ const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => {
                             <Button onClick={snapButtonPressed}>MIDTRANS SNAP</Button>
                         ) : null
                 }
+                <div style={itemStyle}>
+                <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }} />
+                </div>
+                <Item>
+                    <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }} />
+                </Item>
                 <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-s3ZYCAV1B68etLnU"></script>
             </body>
         </html>
