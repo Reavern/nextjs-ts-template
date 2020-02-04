@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 
 import { CSSProperties } from '@material-ui/styles';
 import VisibilitySensor from 'react-visibility-sensor';
-import { useInView } from 'react-intersection-observer'
 
 import AOS from 'aos';
 
