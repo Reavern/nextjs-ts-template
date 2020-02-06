@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NextPage } from 'next';
 import Head from 'next/head'
 
@@ -21,17 +21,22 @@ import AdminLayout from '../../../layouts/AdminLayout';
 import Header from "../../../components/Headers/Header";
 
 import { useRouter } from 'next/router';
+import { withAdminAuth } from '~/src/utils/withAdminAuth';
 
-
-const DashboardPage: NextPage<{ userAgent: string }> = () => {
+const DashboardPage: NextPage<{ userAgent: string }> = ({ userAgent }) => {
     const router = useRouter();
 
+    useEffect(() => {
+        console.log("JEMBZ")
+    }, []);
+
+
     return (
-        <html>
+        <>
             <Head>
                 <title>Admin</title>
             </Head>
-            <body>
+            <>
                 <AdminLayout>
                     <Header />
                     {/* Page content */}
@@ -43,7 +48,7 @@ const DashboardPage: NextPage<{ userAgent: string }> = () => {
                                         <Row className="align-items-center">
                                             <div className="col">
                                                 <h6 className="text-uppercase text-light ls-1 mb-1">
-                                                    Overview {router.pathname}
+                                                    Overview {router.pathname} {userAgent}
                                                 </h6>
                                                 <h2 className="text-white mb-0">Sales value</h2>
                                             </div>
@@ -287,11 +292,27 @@ const DashboardPage: NextPage<{ userAgent: string }> = () => {
                         </Row>
                     </Container>
                 </AdminLayout>
-            </body>
-        </html>
+            </>
+        </>
 
     );
 }
 
+// DashboardPage.getInitialProps = async ctx => {
 
-export default DashboardPage;
+//     const user = await getCurrentUser();
+
+//     console.log("USER", user)
+
+//     if (user) {
+//         return {
+//             userAgent: user.email
+//         };
+//     }
+
+//     return {
+//         userAgent: 'ASDAS'
+//     };
+// }
+
+export default withAdminAuth(DashboardPage);

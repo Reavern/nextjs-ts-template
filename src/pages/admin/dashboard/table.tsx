@@ -34,6 +34,8 @@ import {
 import AdminLayout from '../../../layouts/AdminLayout';
 import Header from "../../../components/Headers/Header";
 
+import { withAdminAuth } from '~/src/utils/withAdminAuth';
+
 
 import _ from 'lodash';
 
@@ -305,4 +307,4 @@ const DashboardTablePage: NextPage<{ userAgent: string }> = () => {
 }
 
 
-export default DashboardTablePage;
+export default withAdminAuth(DashboardTablePage);
