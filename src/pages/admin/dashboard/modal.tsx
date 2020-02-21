@@ -34,6 +34,8 @@ import {
     Input
 } from "reactstrap";
 
+import { withAdminAuth } from '~/src/utils/withAdminAuth';
+
 import AdminLayout from '../../../layouts/AdminLayout';
 import DangerModal from '~/src/components/Modals/DangerModal';
 import NormalModal from '~/src/components/Modals/NormalModal';
@@ -119,5 +121,5 @@ const DashboardModalPage: NextPage<{ userAgent: string }> = () => {
 }
 
 
-export default DashboardModalPage;
+export default withAdminAuth(DashboardModalPage);
 

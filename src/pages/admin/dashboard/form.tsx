@@ -38,7 +38,7 @@ import AdminLayout from '../../../layouts/AdminLayout';
 import Header from "../../../components/Headers/Header";
 
 import { useRouter } from 'next/router';
-
+import { withAdminAuth } from '~/src/utils/withAdminAuth';
 
 const DashboardFormPage: NextPage<{ userAgent: string }> = () => {
 
@@ -261,5 +261,5 @@ const DashboardFormPage: NextPage<{ userAgent: string }> = () => {
 }
 
 
-export default DashboardFormPage;
+export default withAdminAuth(DashboardFormPage);
 

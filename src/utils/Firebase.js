@@ -21,3 +21,12 @@ let firebaseApp = !firebase.apps.length ? firebase.initializeApp(config) : fireb
 
 // export { firebaseApp, secondaryApp };
 export { firebaseApp };
+
+export function getCurrentUser() {
+    return new Promise((resolve, reject) => {
+        const unsubscribe = firebaseApp.auth().onAuthStateChanged(user => {
+            unsubscribe();
+            resolve(user);
+        }, reject);
+    });
+}

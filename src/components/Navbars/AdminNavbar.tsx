@@ -17,11 +17,25 @@ import {
   Media
 } from "reactstrap";
 
+import Router from 'next/router';
+import { firebaseApp, getCurrentUser } from '~/src/utils/Firebase';
+
+
 const AdminNavbar = () => {
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   function toggleDropdown() { setDropdownOpen(!dropdownOpen) }
+
+  function signOut() {
+    firebaseApp.auth().signOut()
+    .then(() => {
+      console.log("OUT")
+    })
+    .catch((e) => {
+      console.log(e)
+    })
+  }
 
   return (
     <>
@@ -65,7 +79,7 @@ const AdminNavbar = () => {
                   <span>Support</span>
                 </DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem href="#pablo" onClick={e => e.preventDefault()}>
+                <DropdownItem onClick={signOut}>
                   <i className="ni ni-user-run" />
                   <span>Logout</span>
                 </DropdownItem>
