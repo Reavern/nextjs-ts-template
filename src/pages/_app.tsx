@@ -15,3 +15,7 @@ export default function MyApp({ Component, pageProps }) {
     // </AnimatePresence>
   )
 }
+
+// MyApp.getInitialProps = async ({router}) => {
+//   console.log(router)
+// }

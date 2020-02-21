@@ -42,7 +42,7 @@ const FormModal = ({isOpen, toggle}) => {
                     <h6 className="heading-small text-muted mb-4">
                       User information
                     </h6>
-                    <div className="pl-lg-4">
+                    <div className="">
                       <Row>
                         <Col lg="6">
                           <FormGroup>
@@ -120,7 +120,7 @@ const FormModal = ({isOpen, toggle}) => {
                     <h6 className="heading-small text-muted mb-4">
                       Contact information
                     </h6>
-                    <div className="pl-lg-4">
+                    <div className="">
                       <Row>
                         <Col md="12">
                           <FormGroup>
@@ -196,7 +196,7 @@ const FormModal = ({isOpen, toggle}) => {
                     <hr className="my-4" />
                     {/* Description */}
                     <h6 className="heading-small text-muted mb-4">About me</h6>
-                    <div className="pl-lg-4">
+                    <div className="">
                       <FormGroup>
                         <label>About Me</label>
                         <Input
