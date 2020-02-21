@@ -59,7 +59,6 @@ const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => {
         try {
             const res = await fetch(URL, {
                 credentials: 'include',
-                mode: 'no-cors',
                 method: 'POST',
                 body: JSON.stringify(parameter),
                 headers: {
@@ -105,7 +104,6 @@ const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => {
         try {
             const res = await fetch(URL, {
                 credentials: 'include',
-                mode: 'no-cors',
                 method: 'POST',
                 body: JSON.stringify(parameter),
                 headers: {
