@@ -83,6 +83,50 @@ const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => {
 
     }
 
+    async function checkBody() {
+  
+        const id = firebaseApp.firestore().collection('id').doc().id;
+
+        const parameter = {
+            "parameter": {
+                "transaction_details": {
+                    "order_id": id,
+                    "gross_amount": 200000
+                }, "credit_card": {
+                    "secure": true
+                }
+            }
+        }
+
+        const URL = 'https://nextjs-ts-template.now.sh/api/checkBody';
+
+        try {
+            const res = await fetch(URL, {
+                method: 'POST',
+                body: JSON.stringify(parameter),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': 'no-cors'
+                }
+            });
+
+            const json = await res.json();
+
+            if (json.error === 0) {
+                console.log(json);
+                setMidtransToken(json.data.token);
+            } else {
+                console.log(json.message);
+            }
+
+        } catch (e) {
+            console.log(e);
+        }
+
+      
+    }
+
     function snapButtonPressed() {
         (window as any).snap.pay(midtransToken as any, {
             onSuccess: function (result) {
@@ -107,6 +151,7 @@ const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => {
                 <h1>TEST : {userAgent}</h1>
                 <Link href="/admin"><a>ADMIN</a></Link><br />
                 <Button onClick={createTransaction}>CREATE MIDTRANS TRANSACTION</Button>
+                <Button onClick={checkBody}>CHECK BODY</Button>
                 {midtransToken}
                 {
                     midtransToken ?
