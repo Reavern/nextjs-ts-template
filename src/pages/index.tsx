@@ -61,6 +61,7 @@ const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => {
                 method: 'POST',
                 body: JSON.stringify(parameter),
                 headers: {
+                    'Accept': 'application/json',
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': 'no-cors'
                 }
