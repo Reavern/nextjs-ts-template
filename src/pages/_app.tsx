@@ -11,18 +11,6 @@ import Router from 'next/router';
 
 export default function MyApp({ Component, pageProps }) {
 
-<<<<<<< HEAD
-  return (
-    // <AnimatePresence exitBeforeEnter={true}>
-      <Component {...pageProps} />
-    // </AnimatePresence>
-  )
-}
-
-// MyApp.getInitialProps = async ({router}) => {
-//   console.log(router)
-// }
-=======
 	useEffect(() => {
 		firebaseApp.auth().onAuthStateChanged((auth) => {
 			if (!auth) {
@@ -36,4 +24,3 @@ export default function MyApp({ Component, pageProps }) {
 
 	return (<Component {...pageProps} />);
 }
->>>>>>> 762371d8ba59efb2d40aa0ee600c9a51bb886107
