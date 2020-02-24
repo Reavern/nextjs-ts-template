@@ -184,122 +184,120 @@ const DashboardTablePage: NextPage<{ userAgent: string }> = () => {
                 <title>My page title</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
-            <AdminLayout>
-                {/* <Header /> */}
-                <div className="header bg-gradient-info pb-8 pt-5 pt-md-8"></div>
-                {/* Page content */}
-                <Container className="mt--7" fluid>
+            {/* <Header /> */}
+            <div className="header bg-gradient-info pb-8 pt-5 pt-md-8"></div>
+            {/* Page content */}
+            <Container className="mt--7" fluid>
 
-                    <Row>
-                        <div className="col">
-                            <Card className="shadow">
-                                <CardHeader className="border-0">
-                                    <Row className="align-items-center">
-                                        <div className="col">
-                                            <h3 className="mb-0">Page visits</h3>
-                                        </div>
-                                        <div className="col text-right">
-                                            <Button
-                                                color="primary"
-                                                onClick={e => e.preventDefault()}
-                                                size="sm"
-                                            >
-                                                See all
+                <Row>
+                    <div className="col">
+                        <Card className="shadow">
+                            <CardHeader className="border-0">
+                                <Row className="align-items-center">
+                                    <div className="col">
+                                        <h3 className="mb-0">Page visits</h3>
+                                    </div>
+                                    <div className="col text-right">
+                                        <Button
+                                            color="primary"
+                                            onClick={e => e.preventDefault()}
+                                            size="sm"
+                                        >
+                                            See all
                                                 </Button>
-                                        </div>
-                                    </Row>
+                                    </div>
+                                </Row>
 
-                                </CardHeader>
-                                <CardBody className="bg-secondary">
-                                    <Row className="align-items-center">
-                                        <Col lg="6">
-                                            <FormGroup>
-                                                {/* <label
+                            </CardHeader>
+                            <CardBody className="bg-secondary">
+                                <Row className="align-items-center">
+                                    <Col lg="6">
+                                        <FormGroup>
+                                            {/* <label
                                                     className="form-control-label"
                                                     htmlFor="input-username"
                                                 >
                                                     Username
                                                 </label> */}
-                                                <Input
-                                                    className="form-control-alternative"
-                                                    placeholder="Search"
-                                                    type="text"
-                                                    value={text}
-                                                    onChange={(e) => {
-                                                        setText(e.target.value);
-                                                        setCurrPage(0);
-                                                    }}
-                                                />
-                                            </FormGroup>
-                                        </Col>
-
-                                    </Row>
-                                </CardBody>
-                                <Table className="align-items-center table-flush" responsive>
-                                    <thead className="thead-light">
-                                        <tr>
-                                            <SortableTableHead
-                                                title={'Name '}
-                                                currPath={sortPath}
-                                                flag={flag}
-                                                path={'name'}
-                                                setSortData={setSortData}
+                                            <Input
+                                                className="form-control-alternative"
+                                                placeholder="Search"
+                                                type="text"
+                                                value={text}
+                                                onChange={(e) => {
+                                                    setText(e.target.value);
+                                                    setCurrPage(0);
+                                                }}
                                             />
-                                            <th scope="col">Budget</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Users</th>
-                                            <th scope="col">Completion</th>
-                                            <th scope="col" />
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {
-                                            SAMPLE ?
-                                                getItems(SAMPLE, text, ['name'], currPage, sortPath, flag).map((data) => {
-                                                    return (
-                                                        <TableRow name={data.name} />
-                                                    );
-                                                }) : null
-                                        }
-                                    </tbody>
-                                </Table>
-                                <CardFooter className="py-4">
-                                    <nav aria-label="...">
-                                        <nav className="justify-content-end mb-0 pagination" >
-                                            <ReactPaginate
-                                                onPageChange={({ selected }) => setCurrPage(selected)}
+                                        </FormGroup>
+                                    </Col>
 
-                                                breakLabel={'...'}
-                                                breakClassName={'break-me'}
-                                                pageCount={filterItem(SAMPLE, text, ['name']).length / 10}
-                                                marginPagesDisplayed={2}
-                                                pageRangeDisplayed={3}
+                                </Row>
+                            </CardBody>
+                            <Table className="align-items-center table-flush" responsive>
+                                <thead className="thead-light">
+                                    <tr>
+                                        <SortableTableHead
+                                            title={'Name '}
+                                            currPath={sortPath}
+                                            flag={flag}
+                                            path={'name'}
+                                            setSortData={setSortData}
+                                        />
+                                        <th scope="col">Budget</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Users</th>
+                                        <th scope="col">Completion</th>
+                                        <th scope="col" />
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        SAMPLE ?
+                                            getItems(SAMPLE, text, ['name'], currPage, sortPath, flag).map((data) => {
+                                                return (
+                                                    <TableRow name={data.name} />
+                                                );
+                                            }) : null
+                                    }
+                                </tbody>
+                            </Table>
+                            <CardFooter className="py-4">
+                                <nav aria-label="...">
+                                    <nav className="justify-content-end mb-0 pagination" >
+                                        <ReactPaginate
+                                            onPageChange={({ selected }) => setCurrPage(selected)}
 
-                                                containerClassName={'pagination justify-content-end mb-0'}
+                                            breakLabel={'...'}
+                                            breakClassName={'break-me'}
+                                            pageCount={filterItem(SAMPLE, text, ['name']).length / 10}
+                                            marginPagesDisplayed={2}
+                                            pageRangeDisplayed={3}
 
-                                                pageClassName={'page-item'}
-                                                pageLinkClassName={'page-link'}
-                                                activeClassName={'active'}
+                                            containerClassName={'pagination justify-content-end mb-0'}
 
-                                                previousLabel={<i className="fas fa-angle-left" />}
-                                                previousClassName={'page-item'}
-                                                previousLinkClassName={'page-link'}
+                                            pageClassName={'page-item'}
+                                            pageLinkClassName={'page-link'}
+                                            activeClassName={'active'}
 
-                                                nextLabel={<i className="fas fa-angle-right" />}
-                                                nextClassName={'page-item'}
-                                                nextLinkClassName={'page-link'}
-                                                forcePage={currPage}
-                                            />
-                                        </nav>
+                                            previousLabel={<i className="fas fa-angle-left" />}
+                                            previousClassName={'page-item'}
+                                            previousLinkClassName={'page-link'}
 
+                                            nextLabel={<i className="fas fa-angle-right" />}
+                                            nextClassName={'page-item'}
+                                            nextLinkClassName={'page-link'}
+                                            forcePage={currPage}
+                                        />
                                     </nav>
 
-                                </CardFooter>
-                            </Card>
-                        </div>
-                    </Row>
-                </Container>
-            </AdminLayout>
+                                </nav>
+
+                            </CardFooter>
+                        </Card>
+                    </div>
+                </Row>
+            </Container>
 
         </div>
 
@@ -307,4 +305,4 @@ const DashboardTablePage: NextPage<{ userAgent: string }> = () => {
 }
 
 
-export default withAdminAuth(DashboardTablePage);
+export default DashboardTablePage;

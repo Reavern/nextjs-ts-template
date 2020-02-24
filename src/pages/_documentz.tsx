@@ -8,10 +8,10 @@ export default function MyDocument() {
     //     return { ...initialProps }
     // }
 
-    async function getInitialProps(ctx) {
-        const initialProps = await Document.getInitialProps(ctx)
-        return { ...initialProps }
-    }
+    // async function getInitialProps(ctx) {
+    //     const initialProps = await Document.getInitialProps(ctx)
+    //     return { ...initialProps }
+    // }
 
     return (
         <Html>

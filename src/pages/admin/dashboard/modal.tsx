@@ -53,7 +53,6 @@ const DashboardModalPage: NextPage<{ userAgent: string }> = () => {
                 <title>My page title</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             </Head>
-            <AdminLayout>
                 {/* <Header /> */}
                 <div className="header bg-gradient-info pb-8 pt-5 pt-md-8"></div>
                 {/* Page content */}
@@ -98,7 +97,6 @@ const DashboardModalPage: NextPage<{ userAgent: string }> = () => {
                         </Col>
                     </Row>
                 </Container>
-            </AdminLayout>
 
 
             <DangerModal
@@ -121,5 +119,5 @@ const DashboardModalPage: NextPage<{ userAgent: string }> = () => {
 }
 
 
-export default withAdminAuth(DashboardModalPage);
+export default DashboardModalPage;
 

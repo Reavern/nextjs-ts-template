@@ -1,9 +1,11 @@
-import React, { useState, useEffect, FunctionComponent } from 'react';
-import { NextPage, NextComponentType } from 'next';
+import React, { useState, useEffect, FunctionComponent, useContext } from 'react';
+import { NextComponentType } from 'next';
 
 import Router from 'next/router';
 
-import { firebaseApp } from '~/src/utils/Firebase';
+import { AuthContext } from '~/src/store/context';
+
+import AdminLayout from '~/src/layouts/AdminLayout';
 
 export function withAdminAuth<T>(Component: FunctionComponent<T>): FunctionComponent {
     return (props: T) => (
@@ -13,39 +15,33 @@ export function withAdminAuth<T>(Component: FunctionComponent<T>): FunctionCompo
     );
 }
 
-const HOC: NextComponentType = ({ children }) => {
+export const HOC: NextComponentType = ({ children }) => {
 
     const [isLoading, setIsLoading] = useState(true);
 
+    const { loggedIn, admin } = useContext(AuthContext);
+
     useEffect(() => {
-        const sub = firebaseApp.auth().onAuthStateChanged((auth) => {
-            // Role Authentication
-            if (auth && Router.pathname.includes('admin/dashboard')) {
-                firebaseApp.firestore()
-                    .collection('admins')
-                    .doc(auth.email)
-                    .get()
-                    .then((snap) => {
-                        if (snap.exists) {
-                            if (snap.data().admin) {
-                                setIsLoading(false);
-                            }
-                        }
-                        firebaseApp.auth().signOut();
-                    })
-                    .catch((e) => {
-                        console.log(e);
-                    })
+        if (loggedIn && Router.pathname.includes('admin/dashboard')) {
+            if (admin) {
+                setIsLoading(false);
+            } else {
+                // firebaseApp.auth().signOut();
             }
-        });
-        return () => sub();
-    }, []);
+        } else {
+            // firebaseApp.auth().signOut();
+        }
+    }, [loggedIn, admin]);
 
     return (
         <>
             {
                 isLoading ?
-                    (<h1>Loading . . .</h1>) : (children)
+                    (<h1>Loading . . .</h1>) : (
+                        <AdminLayout>
+                            {children}
+                        </AdminLayout>
+                    )
             }
         </>
     );

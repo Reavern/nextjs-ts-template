@@ -5,28 +5,19 @@ import 'firebase/firestore';
 import 'firebase/storage';
 import 'firebase/functions';
 
-let config = {
-    apiKey: "AIzaSyAX-roJr9zq9M8YLpUW2fLxEiXBT25QChA",
-    authDomain: "paperie-lab.firebaseapp.com",
-    databaseURL: "https://paperie-lab.firebaseio.com",
-    projectId: "paperie-lab",
-    storageBucket: "paperie-lab.appspot.com",
-    messagingSenderId: "995014915018",
-    appId: "1:995014915018:web:725f302fff8466b7cd1533",
-    measurementId: "G-6JKPD935JC"
+// Config
+const config = {
+    apiKey: "AIzaSyD4RzMhc_1p2JoQJQJkHupDVDYqxvUTyCM",
+    authDomain: "midtrans-testing.firebaseapp.com",
+    databaseURL: "https://midtrans-testing.firebaseio.com",
+    projectId: "midtrans-testing",
+    storageBucket: "midtrans-testing.appspot.com",
+    messagingSenderId: "940556024401",
+    appId: "1:940556024401:web:381d34b1526f31b43f9670",
+    measurementId: "G-QL80JYFCDC"
 };
 
 let firebaseApp = !firebase.apps.length ? firebase.initializeApp(config) : firebase.app();
-// let secondaryApp = firebase.initializeApp(config, "Secondary");
+let secondaryApp = firebase.apps.length < 2 ?firebase.initializeApp(config, "Secondary") : firebase.app("Secondary");
 
-// export { firebaseApp, secondaryApp };
-export { firebaseApp };
-
-export function getCurrentUser() {
-    return new Promise((resolve, reject) => {
-        const unsubscribe = firebaseApp.auth().onAuthStateChanged(user => {
-            unsubscribe();
-            resolve(user);
-        }, reject);
-    });
-}
+export { firebaseApp, secondaryApp };

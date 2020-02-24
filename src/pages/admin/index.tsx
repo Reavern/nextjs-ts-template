@@ -17,13 +17,13 @@ import {
     Col
 } from "reactstrap";
 
-import AuthLayout from '../../layouts/AuthLayout';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import Link from 'next/link';
 import Router from 'next/router';
 
 import { firebaseApp } from '~/src/utils/Firebase';
+import AuthLayout from '~/src/layouts/AuthLayout';
 
 const AdminLoginPage: NextPage<{ userAgent: string }> = () => {
 
@@ -47,52 +47,54 @@ const AdminLoginPage: NextPage<{ userAgent: string }> = () => {
 
 
     return (
-        <div>
+        <>
             <Head>
                 <title>Admin</title>
             </Head>
-            <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                <AuthLayout>
-                    <Col lg="5" md="7">
-                        <Card className="bg-secondary shadow border-0">
-                            <CardBody className="px-lg-5 py-lg-5">
-                                <div className="text-center text-muted mb-4">
-                                    Login
-                                </div>
-                                <Form role="form">
-                                    <FormGroup className="mb-3">
-                                        <InputGroup className="input-group-alternative">
-                                            <InputGroupAddon addonType="prepend">
-                                                <InputGroupText>
-                                                    <i className="ni ni-email-83" />
-                                                </InputGroupText>
-                                            </InputGroupAddon>
-                                            <Input placeholder="Email" type="email" onChange={(e) => setEmail(e.target.value)} />
-                                        </InputGroup>
-                                    </FormGroup>
-                                    <FormGroup>
-                                        <InputGroup className="input-group-alternative">
-                                            <InputGroupAddon addonType="prepend">
-                                                <InputGroupText>
-                                                    <i className="ni ni-lock-circle-open" />
-                                                </InputGroupText>
-                                            </InputGroupAddon>
-                                            <Input placeholder="Password" type="password" onChange={(e) => setPass(e.target.value)} />
-                                        </InputGroup>
-                                    </FormGroup>
-                                    <div className="text-center">
-                                        <Button className="my-4" color="primary" type="button" onClick={signIn}>
-                                            Sign in
-                                        </Button>
-                                    </div>
-                                </Form>
-                            </CardBody>
-                        </Card>
+            {/* <AuthLayout> */}
+            {/* <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }}> */}
 
-                    </Col>
-                </AuthLayout>
-            </motion.div >
-        </div>
+            <Col lg="5" md="7">
+                <Card className="bg-secondary shadow border-0">
+                    <CardBody className="px-lg-5 py-lg-5">
+                        <div className="text-center text-muted mb-4">
+                            Login
+                        </div>
+                        <Form role="form">
+                            <FormGroup className="mb-3">
+                                <InputGroup className="input-group-alternative">
+                                    <InputGroupAddon addonType="prepend">
+                                        <InputGroupText>
+                                            <i className="ni ni-email-83" />
+                                        </InputGroupText>
+                                    </InputGroupAddon>
+                                    <Input placeholder="Email" type="email" onChange={(e) => setEmail(e.target.value)} />
+                                </InputGroup>
+                            </FormGroup>
+                            <FormGroup>
+                                <InputGroup className="input-group-alternative">
+                                    <InputGroupAddon addonType="prepend">
+                                        <InputGroupText>
+                                            <i className="ni ni-lock-circle-open" />
+                                        </InputGroupText>
+                                    </InputGroupAddon>
+                                    <Input placeholder="Password" type="password" onChange={(e) => setPass(e.target.value)} />
+                                </InputGroup>
+                            </FormGroup>
+                            <div className="text-center">
+                                <Button className="my-4" color="primary" type="button" onClick={signIn}>
+                                    Sign in
+                                </Button>
+                            </div>
+                        </Form>
+                    </CardBody>
+                </Card>
+
+            </Col>
+            {/* </motion.div > */}
+            {/* </AuthLayout> */}
+
+        </>
     );
 }
 

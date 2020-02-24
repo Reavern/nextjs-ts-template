@@ -18,7 +18,7 @@ import {
 } from "reactstrap";
 
 import Router from 'next/router';
-import { firebaseApp, getCurrentUser } from '~/src/utils/Firebase';
+import { firebaseApp } from '~/src/utils/Firebase';
 
 
 const AdminNavbar = () => {
