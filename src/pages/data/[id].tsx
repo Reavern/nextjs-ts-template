@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NextPage } from 'next';
 
 
-import Router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
 const DataPage: NextPage = () => {
 
