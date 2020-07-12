@@ -1,64 +1,18 @@
-import React, { useEffect } from 'react';
-import Router from 'next/router';
+// Global import css / js
+import {
+    RecoilRoot,
+    atom,
+    selector,
+    useRecoilState,
+    useRecoilValue,
+} from 'recoil';
 
-// Firebase
-import { firebaseApp } from '~/src/utils/Firebase';
-
-// Global CSS
-import '~/public/fonts/open_sans.css'
-import "~/public/vendor/nucleo/css/nucleo.css";
-import "~/public/vendor/@fortawesome/fontawesome-free/css/all.min.css";
-import "~/public/css/argon-dashboard-react.css";
-import 'aos/dist/aos.css';
-
-// Layout
-import { HOC } from '~/src/utils/withAdminAuth';
-import NormalLayout from '~/src/layouts/NormalLayout';
-import AuthLayout from '~/src/layouts/AuthLayout';
-
-// Store
-import Store from '~/src/store/index';
-
-export default function MyApp({ Component, pageProps, router }) {
-
-	useEffect(() => {
-		firebaseApp.auth().onAuthStateChanged((auth) => {
-			if (!auth) {
-				const path = Router.pathname;
-				if (path.includes('admin/dashboard')) {
-					Router.push('/admin');
-				}
-			}
-		});
-	}, []);
-
-	if (router.pathname.includes('admin/dashboard')) {
-		return (
-			<Store>
-				<HOC>
-					<Component {...pageProps} />
-				</HOC>
-			</Store>
-		);
-	}
-
-
-	if (router.pathname.includes('admin')) {
-		return (
-			<Store>
-				<AuthLayout>
-					<Component {...pageProps} />
-				</AuthLayout>
-			</Store>
-		);
-	}
-
-	return (
-		<Store>
-			<NormalLayout>
-				<Component {...pageProps} />
-			</NormalLayout>
-		</Store>
-	)
-
+function MyApp({ Component, pageProps }) {
+    return (
+        <RecoilRoot>
+            <Component {...pageProps} />
+        </RecoilRoot>
+    );
 }
+
+export default MyApp;

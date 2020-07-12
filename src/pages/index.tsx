@@ -13,9 +13,8 @@ const Home: NextPage<{ userAgent: string }> = ({ userAgent }) => {
 
             </Head>
             <>
-                <h1>TEST : {userAgent}</h1>
+                <h1>{userAgent}</h1>
                 <Link href="/admin"><a>ADMIN</a></Link><br />
-                <Link href="/data/[id]" as={`/data/${'ABC'}`}><a>DATA ID</a></Link><br />
             </>
         </>
     );
